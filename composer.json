@@ -1,0 +1,39 @@
+{
+    "name": "ethicaladdiction/design-lab",
+    "description": "Design lab component for ethicaladdicion.com",
+    "license": "proprietary",
+
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/51systems/dojoModule.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/51systems/dojo-grid.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/51systems/dext.git"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.3.3",
+
+        "imagine/imagine": "v0.4.1",
+
+        "doctrine/orm": "2.3.1",
+        "doctrine/doctrine-orm-module": "0.7.0",
+        "doctrine/migrations": "v1.0-ALPHA1",
+        "gedmo/doctrine-extensions": "v2.3.6",
+
+        "zendframework/zendframework": ">2.2.0rc1",
+
+
+        "widmogrod/zf2-assetic-module": "1.2.2",
+        "51systems/dojo-module": "dev-master",
+        "51systems/dojo-grid": "dev-master",
+        "51systems/dext": "dev-master"
+    }
+}

@@ -120,8 +120,18 @@ abstract class AbstractExecutor implements EventManagerAwareInterface
         return $this;
     }
 
+    /**
+     * Called when a {@link PluginEvent} of type EVENT_OUTPUT_STRING is emitted.
+     * @param PluginEvent $event
+     * @return void
+     */
     public abstract function outputString(PluginEvent $event);
 
+    /**
+     * Called when a {@link PluginEvent} of type EVENT_FAILURE is emitted.
+     *
+     * @param PluginEvent $event
+     */
     public function onFailure(PluginEvent $event)
     {
         $this->doRun = false;

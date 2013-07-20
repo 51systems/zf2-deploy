@@ -1,15 +1,24 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: dustin
- * Date: 19/07/13
- * Time: 9:46 PM
- * To change this template use File | Settings | File Templates.
- */
 
-namespace Zf2Deploy\Test\Executor;
+namespace ZF2Deploy\Test\Executor;
 
+use Zend\Config\Config;
+use ZF2Deploy\Executor\Html;
 
-class HtmlTest extends \PHPUnit_Framework_TestCase {
+class HtmlTest extends \PHPUnit_Framework_TestCase
+{
+    public function testFoo()
+    {
+        $executor = new Html();
 
+        $config = new Config(array(
+            'plugins' => array(
+                'echo' => array(
+                    'message' => 'Hello World'
+                )
+            )
+        ));
+
+        $executor->run($config);
+    }
 }

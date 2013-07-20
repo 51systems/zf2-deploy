@@ -3,7 +3,7 @@
 namespace ZF2Deploy\Executor;
 
 use Zend\Log\Logger;
-use ZF2Deploy\Log\Writer\String;
+use ZF2Deploy\Log\Writer\String as StringWriter;
 use ZF2Deploy\Plugin\PluginEvent;
 
 /**
@@ -20,6 +20,9 @@ class Html extends AbstractExecutor
      */
     private $pluginOutput = '';
 
+    /**
+     * @var StringWriter
+     */
     private $logWriter;
 
     /**
@@ -30,7 +33,7 @@ class Html extends AbstractExecutor
         $logger = parent::createLogger();
 
         if ($this->logWriter == null) {
-            $this->logWriter = new String();
+            $this->logWriter = new StringWriter();
         }
 
         $logger->addWriter($this->logWriter);
@@ -38,9 +41,29 @@ class Html extends AbstractExecutor
         return $logger;
     }
 
-
+    /**
+     * @param PluginEvent $event
+     */
     public function outputString(PluginEvent $event)
     {
-        $this->pluginOutput .= get_class($event->getPlugin()) . ":: " . $event->getParam('output');
+        $this->pluginOutput .= get_class($event->getPlugin()) . ":: " . $event->getParam('output') . "\n--------\n\n";
+    }
+
+    /**
+     * Gets the output of the log.
+     * @return string
+     */
+    public function getLogOutput()
+    {
+        return $this->logWriter->getLogString();
+    }
+
+    /**
+     * Gets the output of the plugins
+     * @return string
+     */
+    public function getPluginOutput()
+    {
+        return $this->pluginOutput;
     }
 }

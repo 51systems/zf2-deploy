@@ -1,5 +1,5 @@
 <?php
-namespace Application\Tests;//Change this namespace for your test
+namespace ZF2Deploy\Tests;//Change this namespace for your test
 
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
@@ -90,6 +90,7 @@ class Bootstrap
                 'autoregister_zf' => true,
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
+                    'ZF2Deploy' => __DIR__ . '/../src/ZF2Deploy'
                 ),
             ),
         ));

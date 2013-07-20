@@ -50,4 +50,12 @@ class String extends AbstractWriter
         $line = $this->formatter->format($event) . $this->logSeparator;
         $this->logString .= $line;
     }
+
+    /**
+     * @return string
+     */
+    public function getLogString()
+    {
+        return $this->logString;
+    }
 }

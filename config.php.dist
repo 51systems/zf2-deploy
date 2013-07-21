@@ -1,0 +1,10 @@
+<?php
+/**
+* A Distribution-specific php file. Install.php will load this file and pass its contents
+* to a Zend/Config constructor.
+*/
+
+return array (
+
+    'plugins' => array ()
+);

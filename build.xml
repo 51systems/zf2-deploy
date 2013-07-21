@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build" description="Build related targets" default="package">
+
+    <import file="buildtools/composer.xml"/>
+    <import file="buildtools/test.xml"/>
+
+    <property name="build.dir" value="${project.basedir}/.build"/>
+    <property name="src.dir" value="${project.basedir}/src"/>
+    <property name="test.dir" value="${project.basedir}/tests"/>
+    <property name="test.config" value="${project.basedir}/tests/phpunit.xml"/>
+
+    <target name="build" depends="package-install">
+        <mkdir dir="${build.dir}/artifacts"/>
+    </target>
+
+    <target name="test" depends="build, test.test">
+
+    </target>
+
+    <target name="package">
+        <tar
+            destfile="${build.dir}/artifacts/zf2-deploy-${version}.tar.gz"
+            compression="gzip">
+            <fileset dir="${project.basedir}">
+                <exclude name=".build/**"/>
+                <exclude name="**/.git/**"/>
+                <exclude name=".git"/>
+                <exclude name="build.xml"/>
+                <exclude name="buildtools/**"/>
+            </fileset>
+        </tar>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+</project>

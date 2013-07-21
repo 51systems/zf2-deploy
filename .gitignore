@@ -6,3 +6,5 @@ extras/documentation
 vendor
 .idea
 config.php
+.build
+composer.phar

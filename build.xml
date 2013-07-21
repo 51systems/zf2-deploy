@@ -17,7 +17,7 @@
 
     </target>
 
-    <target name="package">
+    <target name="package" depends="build">
         <tar
             destfile="${build.dir}/artifacts/zf2-deploy-${version}.tar.gz"
             compression="gzip">

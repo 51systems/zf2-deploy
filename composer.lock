@@ -1,0 +1,115 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "6e6d92d0e45d71ee8c80441295886e28",
+    "packages": [
+        {
+            "name": "ncuesta/clinner",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/51systems/Clinner.git",
+                "reference": "e341ec6a18c47a9616d7fd4090c0fbaad5c02dcf"
+            },
+            "require": {
+                "php": ">=5.3",
+                "symfony/class-loader": ">2.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Clinner": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "José Nahuel Cuesta Luengo",
+                    "email": "nahuelcuestaluengo@gmail.com"
+                }
+            ],
+            "description": "Command execution abstraction",
+            "homepage": "http://ncuesta.github.com/Clinner",
+            "keywords": [
+                "cli",
+                "command",
+                "execution",
+                "pipe"
+            ],
+            "time": "2013-07-20 16:14:02"
+        },
+        {
+            "name": "symfony/class-loader",
+            "version": "v2.3.2",
+            "target-dir": "Symfony/Component/ClassLoader",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/ClassLoader.git",
+                "reference": "v2.3.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/ClassLoader/zipball/v2.3.2",
+                "reference": "v2.3.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/finder": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\ClassLoader\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony ClassLoader Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-05-24 17:54:44"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "ncuesta/clinner": 20
+    },
+    "platform": {
+        "php": ">=5.3.3"
+    },
+    "platform-dev": [
+
+    ]
+}

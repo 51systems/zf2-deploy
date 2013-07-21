@@ -5,7 +5,7 @@ namespace ZF2Deploy\Plugin\Db\Doctrine;
 
 use Clinner\Command\Command;
 use Zend\Config\Config;
-use ZF2Deploy\Plugin\AbstractPlugin;
+
 
 /**
  * Class DoctrineMigrationView

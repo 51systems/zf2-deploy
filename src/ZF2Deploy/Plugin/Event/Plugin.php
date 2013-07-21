@@ -2,7 +2,7 @@
 
 namespace ZF2Deploy\Plugin\Event;
 
-use ArrayAccess;
+
 use Zend\EventManager\Event as BaseEvent;
 use ZF2Deploy\Plugin\DeploymentPluginInterface;
 

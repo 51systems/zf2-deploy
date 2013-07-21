@@ -9,7 +9,7 @@ use Zend\Log\LoggerInterface;
 use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\ConfigInterface;
 use Zend\ServiceManager\Exception;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
+
 use ZF2Deploy\Exception\InvalidPluginException;
 use ZF2Deploy\Plugin\AbstractPlugin;
 

@@ -9,13 +9,10 @@
 
 namespace ZF2Deploy\Log\Writer;
 
-
-use Traversable;
 use Zend\Log\Exception;
 use Zend\Log\Filter;
 use Zend\Log\Formatter;
 use Zend\Log\Writer\AbstractWriter;
-use Zend\Log\Writer\Logger;
 use Zend\Log\Formatter\Simple as SimpleFormatter;
 
 class String extends AbstractWriter

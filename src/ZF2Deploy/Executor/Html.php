@@ -4,7 +4,7 @@ namespace ZF2Deploy\Executor;
 
 use Zend\Log\Logger;
 use ZF2Deploy\Log\Writer\String as StringWriter;
-use ZF2Deploy\Plugin\Event\Plugin as PluginEvent;
+
 use ZF2Deploy\Plugin\Event\OutputString as OutputStringEvent;
 
 /**

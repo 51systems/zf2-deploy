@@ -12,7 +12,7 @@ namespace ZF2Deploy\Plugin\File;
 
 use Zend\Config\Config;
 use ZF2Deploy\Plugin\AbstractPlugin;
-use ZF2Deploy\Plugin\GlobalConfigurationAwareInterface;
+
 
 class SymbolicLink extends AbstractPlugin
 {

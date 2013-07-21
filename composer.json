@@ -12,7 +12,13 @@
 
     "require": {
         "php": ">=5.3.3",
-        "ncuesta/clinner": "dev-master"
+        "ncuesta/clinner": "dev-master",
+
+
+        "zendframework/zend-servicemanager": ">2.2",
+        "zendframework/zend-eventmanager": ">2.2",
+        "zendframework/zend-log": ">2.2",
+        "zendframework/zend-config": ">2.2"
     },
 
     "autoload" : {

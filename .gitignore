@@ -5,3 +5,4 @@ demos/
 extras/documentation
 vendor
 .idea
+config.php

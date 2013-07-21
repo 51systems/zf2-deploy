@@ -1,14 +1,13 @@
 <?php
 
-namespace ZF2Deploy\Plugin;
+namespace ZF2Deploy\Plugin\Event;
 
 use ArrayAccess;
-use Zend\EventManager\Event;
+use Zend\EventManager\Event as BaseEvent;
+use ZF2Deploy\Plugin\DeploymentPluginInterface;
 
-class PluginEvent extends Event
+class Plugin extends BaseEvent
 {
-    const EVENT_OUTPUT_STRING = 'output.string';
-
     const EVENT_FAILURE = 'plugin.failure';
 
     /**
@@ -44,16 +43,5 @@ class PluginEvent extends Event
     public function getPlugin()
     {
         return $this->plugin;
-    }
-
-    /**
-     * Creates a new Output string event.
-     * @param DeploymentPluginInterface $plugin
-     * @param $output
-     * @return PluginEvent
-     */
-    public static function OutputStringFactory(DeploymentPluginInterface $plugin, $output)
-    {
-        return new self(static::EVENT_OUTPUT_STRING, $plugin, array('output' => $output));
     }
 }

@@ -4,7 +4,8 @@ namespace ZF2Deploy\Executor;
 
 use Zend\Log\Logger;
 use ZF2Deploy\Log\Writer\String as StringWriter;
-use ZF2Deploy\Plugin\PluginEvent;
+use ZF2Deploy\Plugin\Event\Plugin as PluginEvent;
+use ZF2Deploy\Plugin\Event\OutputString as OutputStringEvent;
 
 /**
  * Class Html
@@ -42,11 +43,11 @@ class Html extends AbstractExecutor
     }
 
     /**
-     * @param PluginEvent $event
+     * @param OutputStringEvent $event
      */
-    public function outputString(PluginEvent $event)
+    public function outputString(OutputStringEvent $event)
     {
-        $this->pluginOutput .= get_class($event->getPlugin()) . ":: " . $event->getParam('output') . "\n--------\n\n";
+        $this->pluginOutput .= get_class($event->getPlugin()) . ":: " . $event->getString() . PHP_EOL. "--------" . PHP_EOL . PHP_EOL;
     }
 
     /**

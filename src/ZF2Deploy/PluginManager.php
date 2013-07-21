@@ -24,7 +24,16 @@ class PluginManager extends AbstractPluginManager implements EventManagerAwareIn
      */
     protected $invokableClasses = array(
         'echo' => 'ZF2Deploy\Plugin\EchoPlugin',
-        'doctrinemigrationview' => 'ZF2Deploy\Plugin\Db\DoctrineMigrationView',
+
+        'doctrineschemaupdate' => 'ZF2Deploy\Plugin\Db\Doctrine\SchemaUpdate',
+        'doctrinegenerateproxies' => 'ZF2Deploy\Plugin\Db\Doctrine\GenerateProxies',
+        'doctrineclearcache' => 'ZF2Deploy\Plugin\Db\Doctrine\ClearCache',
+
+        'asseticsetup' => 'ZF2Deploy\Plugin\File\Assetic\Setup',
+        'asseticbuild' => 'ZF2Deploy\Plugin\File\Assetic\Build',
+
+        'extracttar' => 'ZF2Deploy\Plugin\File\ExtractTar',
+        'symboliclink' => 'ZF2Deploy\Plugin\File\SymbolicLink',
     );
 
     /**

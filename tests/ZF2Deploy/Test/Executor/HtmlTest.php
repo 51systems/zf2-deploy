@@ -7,7 +7,7 @@ use ZF2Deploy\Executor\Html;
 
 class HtmlTest extends \PHPUnit_Framework_TestCase
 {
-    public function testFoo()
+    public function testSinglePlugin()
     {
         $executor = new Html();
 
@@ -20,5 +20,32 @@ class HtmlTest extends \PHPUnit_Framework_TestCase
         ));
 
         $executor->run($config);
+
+        $this->assertContains('Hello World', $executor->getPluginOutput());
+        $this->assertContains('Outputing non-empty message', $executor->getLogOutput());
+    }
+
+    public function testMultiplePlugin()
+    {
+        $executor = new Html();
+
+        $config = new Config(array(
+            'plugins' => array(
+                'echo' => array(
+                    array(
+                        'message' => 'Foo'
+                    ),
+                    array(
+                        'message' => 'Bar'
+                    )
+                ),
+            )
+        ));
+
+        $executor->run($config);
+
+        $this->assertContains('Foo', $executor->getPluginOutput());
+        $this->assertContains('Bar', $executor->getPluginOutput());
+        $this->assertContains('Outputing non-empty message', $executor->getLogOutput());
     }
 }

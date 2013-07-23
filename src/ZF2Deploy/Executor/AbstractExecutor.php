@@ -119,6 +119,7 @@ abstract class AbstractExecutor implements EventManagerAwareInterface
      */
     public function run(Config $config)
     {
+        $this->initRun($config);
         $this->doRun = true;
         $this->config = $config;
 
@@ -148,6 +149,21 @@ abstract class AbstractExecutor implements EventManagerAwareInterface
                     $plugin->run($pluginConfig);
                 }
             }
+        }
+    }
+
+    /**
+     * Does initiation prior to a run.
+     *
+     * @param array|Config $config
+     */
+    public function initRun($config)
+    {
+        if (!empty($config['workingDir'])) {
+            $workingDir = realpath($config['workingDir']);
+
+            $this->getLogger()->info('Switching working directory to: ' . $workingDir);
+            chdir($workingDir);
         }
     }
 

@@ -33,6 +33,12 @@ class ExtractTar extends AbstractPlugin
     const TOKEN_TARGET_DIR = '@TAR_TARGET_DIR';
 
     /**
+     * The last error thrown by the {@link Archive_Tar} class
+     * @var mixed
+     */
+    protected $lastError;
+
+    /**
      * Inits the PEAR Archive component
      * @throws \Exception
      */
@@ -65,7 +71,8 @@ class ExtractTar extends AbstractPlugin
 
         $this->info(sprintf("Extracting '%s' to '%s'", $config['archive'], $destDir));
 
-        $tarFile->extract($destDir);
+        if (!$tarFile->extract($destDir))
+            $this->err(sprintf('Error extracting archive: %s', $this->lastError));
 
         $this->getEventManager()->trigger(new ReplaceToken($this, static::TOKEN_TARGET_DIR, $destDir));
     }
@@ -120,6 +127,23 @@ class ExtractTar extends AbstractPlugin
             }
         }
 
-        return new Archive_Tar(realpath($path), $compression);
+        if (!file_exists($path)) {
+            $this->warn(sprintf("Path '%s' does not exist.", $path));
+        }
+
+        $tarArchive = new Archive_Tar(realpath($path), $compression);
+        $tarArchive->setErrorHandling(PEAR_ERROR_CALLBACK, array(&$this, 'onTarError'));
+
+        return $tarArchive;
+    }
+
+    /**
+     * Called when there is an error in the tar file.
+     *
+     * @param \PEAR_Error|mixed $error
+     */
+    public function onTarError($error)
+    {
+        $this->lastError = $error;
     }
 }

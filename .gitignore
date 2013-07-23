@@ -5,6 +5,6 @@ demos/
 extras/documentation
 vendor
 .idea
-config.php
+deploy-config.php
 .build
 composer.phar

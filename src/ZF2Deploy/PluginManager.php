@@ -54,6 +54,7 @@ class PluginManager extends AbstractPluginManager implements EventManagerAwareIn
     protected $logger;
 
     /**
+     * The event manager that the plugin manager uses.
      * @var EventManagerInterface
      */
     protected $eventManager;
@@ -71,7 +72,7 @@ class PluginManager extends AbstractPluginManager implements EventManagerAwareIn
                 $instance->setLogger($self->getLogger());
             }
 
-            if ($self->eventManager != null && $instance instanceof EventManagerAwareInterface) {
+            if ($self->hasEventManager() && $instance instanceof EventManagerAwareInterface) {
                 $instance->setEventManager($self->getEventManager());
             }
         });
@@ -131,5 +132,14 @@ class PluginManager extends AbstractPluginManager implements EventManagerAwareIn
     public function getEventManager()
     {
         return $this->eventManager;
+    }
+
+    /**
+     * Checks if an event manager has been registered with the plugin manager.
+     * @return bool
+     */
+    public function hasEventManager()
+    {
+        return $this->eventManager !== null;
     }
 }

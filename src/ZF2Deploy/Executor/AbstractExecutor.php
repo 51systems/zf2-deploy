@@ -126,7 +126,16 @@ abstract class AbstractExecutor implements EventManagerAwareInterface
         if ($this->config->offsetExists('plugins')) {
             $pm = $this->getPluginManager();
 
-            foreach($this->config->get('plugins', array()) as $pluginName => $pluginConfigs) {
+            //We can't just iterate through the plugins directly as
+            //Some plugins may re-write the configuration, destroying the
+            //internal array pointers
+            $plugins = $this->config->get('plugins', array());
+            if($plugins instanceof Config)
+                $plugins = $plugins->toArray();
+            $plugins = array_keys($plugins);
+
+            foreach($plugins as $pluginName) {
+                $pluginConfigs = $this->config['plugins'][$pluginName];
                 //We assume that we have multiple configurations passed in.
                 //This is required in the case where the plugin in invoked multiple times
 
@@ -138,6 +147,8 @@ abstract class AbstractExecutor implements EventManagerAwareInterface
                 foreach ($pluginConfigs as $pluginConfig) {
                     if (!$this->doRun)
                         break;
+
+                    $this->getLogger()->info('Executing Plugin: ' . $pluginName, $pluginConfig);
 
                     /** @var DeploymentPluginInterface $plugin */
                     $plugin = $pm->get($pluginName);
@@ -227,6 +238,8 @@ abstract class AbstractExecutor implements EventManagerAwareInterface
             $this->getLogger()->warn('Attempted to replace token in configuration, but configuration is read-only');
             return;
         }
+
+        $this->getLogger()->info(sprintf('Replacing configuration instances of "%s" with "%s"', $event->getToken(), $event->getValue()));
 
         $processor = new TokenProcessor(array(
             $event->getToken() => $event->getValue()

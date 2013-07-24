@@ -10,6 +10,7 @@
 namespace ZF2Deploy\Plugin\File\Assetic;
 
 use Zend\Config\Config;
+use ZF2Deploy\PhpCliHelper;
 use ZF2Deploy\Plugin\AbstractPlugin;
 use Clinner\Command\Command;
 use ZF2Deploy\Plugin\Event\OutputString as OutputStringEvent;
@@ -31,7 +32,7 @@ abstract class AbstractAssetic extends AbstractPlugin
             throw new \Exception('assetic-console-path must be set');
         }
 
-        $cmd = Command::create('php', array($config['assetic-console-path'], 'assetic'));
+        $cmd = Command::create(PhpCliHelper::getPhpBin(), array($config['assetic-console-path'], 'assetic'));
         $this->configureCommand($cmd, $config);
 
         $this->info(sprintf('Executing %s', $cmd->toCommandString()));

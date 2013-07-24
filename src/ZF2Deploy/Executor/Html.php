@@ -56,6 +56,9 @@ class Html extends AbstractExecutor
      */
     public function getLogOutput()
     {
+        if ($this->logWriter == null)
+            return "";
+
         return $this->logWriter->getLogString();
     }
 

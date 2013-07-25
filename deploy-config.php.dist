@@ -5,6 +5,11 @@
 */
 
 return array (
+    'profiles' => array (
+        'Default' => array (
+            'workingDir' => __DIR__,
 
-    'plugins' => array ()
+            'plugins' => array ()
+        )
+    )
 );

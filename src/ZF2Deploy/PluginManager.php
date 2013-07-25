@@ -33,7 +33,9 @@ class PluginManager extends AbstractPluginManager implements EventManagerAwareIn
         'asseticbuild' => 'ZF2Deploy\Plugin\File\Assetic\Build',
 
         'extracttar' => 'ZF2Deploy\Plugin\File\ExtractTar',
+
         'symboliclink' => 'ZF2Deploy\Plugin\File\SymbolicLink',
+        'delete' => 'ZF2Deploy\Plugin\File\Delete',
     );
 
     /**

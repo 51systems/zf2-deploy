@@ -13,6 +13,9 @@ use Zend\Config\Config;
  *
  * Plugin to display the SQL that is required to upgrade the database.
  * Uses the doctrine command line utility to generate the SQL.
+ *
+ * Accepted Configuration Values:
+ *  execute [Optional]  - If true, will execute the SQL needed to update the schema, otherwise just displays it.
  */
 class SchemaUpdate extends AbstractDoctrine
 {
@@ -22,6 +25,16 @@ class SchemaUpdate extends AbstractDoctrine
      */
     protected function configureCommand(Command $cmd, $config)
     {
-        return $cmd->setArguments(array('orm:schema-tool:update', '--dump-sql'));
+        $action = null;
+
+        if (isset($config['execute']) && $config['execute']) {
+            $action = '--force';
+        }
+
+        if ($action == null) {
+            $action = '--dump-sql';
+        }
+
+        return $cmd->setArguments(array('orm:schema-tool:update', $action));
     }
 }

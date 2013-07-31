@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="build" description="Build related targets" default="package">
 
+    <import file="buildtools/tasks.xml"/>
     <import file="buildtools/git.xml"/>
     <import file="buildtools/composer.xml"/>
     <import file="buildtools/test.xml"/>

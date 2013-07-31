@@ -44,10 +44,12 @@ class PersistConfigTokens extends AbstractPlugin
     function run($config)
     {
         if (isset($config['save']) && $config['save']) {
+            $this->info('Config Token saving enabled');
             $this->eventManager->attach(ReplaceTokenEvent::EVENT_REPLACE_CONFIG_TOKEN, array(&$this, 'onReplaceToken'));
         }
 
         if (isset($config['restore']) && $config['restore']) {
+            $this->info('Restoring && replacing config tokens');
             $session = $this->getSession();
 
             foreach ($session as $token => $value) {
@@ -56,6 +58,7 @@ class PersistConfigTokens extends AbstractPlugin
         }
 
         if (isset($config['clear']) && $config['clear']) {
+            $this->info('Clearing saved config tokens');
             $session = $this->getSession();
             $session->getManager()->getStorage()->clear($session->getName());
         }

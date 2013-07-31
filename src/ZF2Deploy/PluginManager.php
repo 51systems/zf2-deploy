@@ -37,7 +37,7 @@ class PluginManager extends AbstractPluginManager implements EventManagerAwareIn
         'symboliclink' => 'ZF2Deploy\Plugin\File\SymbolicLink',
         'delete' => 'ZF2Deploy\Plugin\File\Delete',
 
-        'persistConfigTokens' => 'ZF2Deploy\Plugin\PersistConfigTokens'
+        'persistconfigtokens' => 'ZF2Deploy\Plugin\PersistConfigTokens'
     );
 
     /**
@@ -46,8 +46,7 @@ class PluginManager extends AbstractPluginManager implements EventManagerAwareIn
      * @var array
      */
     protected $aliases = array(
-        'echoPlugin' => 'echo',
-        'persistConfigTokens' => 'configTokens'
+        'configtokens' => 'persistconfigtokens'
     );
 
     //endregion

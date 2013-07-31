@@ -3,6 +3,7 @@
 
     <import file="buildtools/composer.xml"/>
     <import file="buildtools/test.xml"/>
+    <import file="buildtools/version.xml"/>
 
     <property name="build.dir" value="${project.basedir}/.build"/>
     <property name="src.dir" value="${project.basedir}/src"/>
@@ -13,11 +14,19 @@
         <mkdir dir="${build.dir}/artifacts"/>
     </target>
 
+    <target name="replace-version-string" depends="validate-version">
+        <fileset dir="src/ZF2Deploy" id="version.files">
+            <include name="Version.php"/>
+        </fileset>
+
+        <phingcall target="version.replace-version-string" inheritAll="true" inheritRefs="true"/>
+    </target>
+
     <target name="test" depends="build, test.test">
 
     </target>
 
-    <target name="package" depends="build">
+    <target name="package" depends="build, replace-version-string">
         <tar
             destfile="${build.dir}/artifacts/zf2-deploy-${version}.tar.gz"
             compression="gzip">

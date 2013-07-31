@@ -54,5 +54,6 @@ if (isset($_POST['profile']) && isset($config['profiles'][$_POST['profile']])) {
 
     </form>
 
+<div style="text-align: right"><?php echo ZF2Deploy\Version::VERSION?></div>
 </body>
 </html>

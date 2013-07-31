@@ -71,6 +71,7 @@ class PersistConfigTokens extends AbstractPlugin
      */
     public function onReplaceToken(ReplaceTokenEvent $event)
     {
+        $this->info(sprintf('Saving token: %s Value:(%s)', $event->getToken(), $event->getValue()));
         $session = $this->getSession();
         $session[$event->getToken()] = $event->getValue();
     }
@@ -81,8 +82,8 @@ class PersistConfigTokens extends AbstractPlugin
      */
     protected function getSession()
     {
-        if ($this->sessionContainer == null) {
-            $this->sessionContainer = new SessionContainer(get_class($this));
+        if (!isset($this->sessionContainer)) {
+            $this->sessionContainer = new SessionContainer('PersistConfigTokens');
         }
 
         return $this->sessionContainer;

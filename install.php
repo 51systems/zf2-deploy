@@ -10,6 +10,8 @@ if (!file_exists('deploy-config.php')) {
     throw new Exception('deploy-config.php must exist at the same level as install.php');
 }
 
+session_start();
+
 $config = include_once 'deploy-config.php';
 
 if (!($config instanceof \Zend\Config\Config))

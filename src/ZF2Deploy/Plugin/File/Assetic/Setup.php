@@ -27,7 +27,7 @@ class Setup extends AbstractAssetic
     protected function configureCommand(Command $cmd, $config)
     {
         $arguments = $cmd->getArguments()->getAll();
-        array_push($arguments, 'build');
+        array_push($arguments, 'setup');
         $cmd->setArguments($arguments);
         return $cmd;
     }
